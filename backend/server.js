@@ -1,7 +1,7 @@
 /**
  * Instructions
  * 
- * Implement an endpoint that lists all payment methods and accepts a filter by "brand"
+ * Implement an endpoint that lists all payment methods and accepts a filter by "type"
  * Implement an endpoint that shows the details of a single payment method
  * Implement an endpoint that deletes a single payment method
  * Implement an endpoint that exports all payments methods in CSV format
@@ -14,7 +14,8 @@
  * A Payment Method record must use the following schema:
  * {
  *  id: <some random ID>,
- *  brand: <array of strings[visa,master,amex,discovery]>,
+ *  brand: <string, one of [visa,master,amex,discovery]>,
+ *  type: <string, one of [credit_card,debit_card]>,
  *  last4: <int(4)>,
  *  created_at: <datetime>
  * }
