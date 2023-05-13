@@ -22,16 +22,92 @@
  *
  */
 
+const data = require('./data/payment');
 const express = require('express');
-
 const server = express();
+const port = 80;
 
-server.get('/payment_methods', (req, res) => {
+
+// lists all payment methods
+server.get('/payment_methods/', (req, res) => {
+  res.status(200).send({
+    status: 200,
+    data
+  });
   res.status(404).send({
-    status: 200
+    status: 404,
+    message: 'Payment method not found'
+  });
+  res.status(500).send({
+    status: 500,
+    message: 'Internal server error'
+  });
+
+});
+
+// lists all payment methods and accepts a filter by "type"
+server.get('/payment_methods/:type', (req, res) => {
+  const type = req.params.type;
+  const filteredPaymentMethods = data.find(item => item.type === type);
+  res.status(200).send({
+    status: 200,
+    filteredPaymentMethods
+  });
+  res.status(404).send({
+    status: 404,
+    message: 'Payment method not found'
+  });
+
+  res.status(500).send({
+    status: 500,
+    message: 'Internal server error'
   });
 });
 
-server.listen({ port: process.env.PORT || 80 }, () => {
+// shows the details of a single payment method
+server.get('/payment_methods/:id', (req, res) => {
+  const id = req.query.id;
+  const paymentMethod = data.filter(item => item.id == id);
+
+  res.status(200).send({
+    status: 200,
+    paymentMethod
+  });
+
+  res.status(404).send({
+    status: 404,
+    message: 'Payment method id not found'
+  });
+
+  res.status(500).send({
+    status: 500,
+    message: 'Internal server error'
+  });
+});
+
+// deletes a single payment method
+server.delete('/payment_methods/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const paymentMethod = data.findIndex(item => item.id === id);
+
+  // remove the item from the data array
+  data.splice(paymentMethod, 1);
+  res.status(200).send({
+    status: 200,
+    message: 'Payment method deleted'
+  });
+  if (!paymentMethod) {
+    res.status(404).send({
+      status: 404,
+      message: 'Payment method not found'
+    });
+  }
+  res.status(500).send({
+    status: 500,
+    message: 'Internal server error'
+  });
+});
+
+server.listen({ port: process.env.PORT || port }, () => {
   console.log(`🚀 API Server instance ready`);
 });

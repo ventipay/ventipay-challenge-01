@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Roboto:wght@400;500;900&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    background-color: #F2784B;
+}
+
+.App {
+    background-color: #F2784B;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: start;
+    padding: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+    color: #ffffff;
+    width: 100%;
+    font-family: 'Darumadrop One', cursive;
+    ;
+}
+
+.subtitle {
+    color: #ffffff;
+    font-weight: normal;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background: #25D997;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    align-self: center;
+}
+
+.subtitle span {
+    font-weight: 600;
+}
+
+.card {
+    background-color: #F25252;
+    padding: 1rem;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.title-method {
+    font-weight: 600;
+}
+
+.list-method {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    gap: 1rem;
+}
+
+.each-card {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: rgb(253, 253, 252);
+    padding: .4rem;
+    width: 100%;
+}
+
+.actions {
+    margin-top: 1.5rem;
+}
+
+.actions button {
+    text-decoration: none;
+}
+
+.delete {
+    background-color: #FF0000;
+    border-radius: 0;
+    border: none;
+    width: 100%;
+    color: rgba(255, 255, 255, 1);
+    padding: .5rem;
+    font-weight: 600;
+}
+
+.delete:hover {
+    background-color: #cb0a0a;
+    opacity: 0.8;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .each-card {
+        width: fit-content;
+    }
+}
